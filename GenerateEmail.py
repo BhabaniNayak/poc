@@ -10,6 +10,8 @@ headers = {
     "Content-Type": "application/json"
 }
 
+key = st.secrets["auth_token"]
+
 # load data
 df = pd.read_csv("./leads.csv")
 
@@ -20,7 +22,7 @@ def generate():
     prompt = st.text_input('Enter customer id:') 
 
     # Llms
-    llm = OpenAI(openai_api_key=st.secrets["auth_token"], temperature=0.7)
+    llm = OpenAI(openai_api_key=key, temperature=0.7)
 
     if prompt: 
         customer = df[df['lead_id'] == prompt]
