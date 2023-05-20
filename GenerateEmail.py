@@ -5,7 +5,10 @@ import random
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 
-openai_api_key = "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"
+headers = {
+    "authorization": st.secrets["auth_token"],
+    "Content-Type": "application/json"
+}
 
 # load data
 df = pd.read_csv("./leads.csv")
@@ -17,7 +20,7 @@ def generate():
     prompt = st.text_input('Enter customer id:') 
 
     # Llms
-    llm = OpenAI(openai_api_key=openai_api_key, temperature=0.7)
+    llm = OpenAI(openai_api_key=st.secrets["auth_token"], temperature=0.7)
 
     if prompt: 
         customer = df[df['lead_id'] == prompt]
