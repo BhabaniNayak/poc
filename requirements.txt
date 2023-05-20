@@ -1,0 +1,4 @@
+langchain==0.0.174
+pandas==2.0.1
+streamlit==1.22.0
+streamlit_option_menu==0.3.4
